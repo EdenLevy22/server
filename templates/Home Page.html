@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
     <link rel="stylesheet" href="../static/homework2.css">
-    <script src="../static/inin.js"></script>
+    <script src="inin"></script>
 
 </head>
 
@@ -22,10 +22,10 @@
         <nav>
             <ul>
                 <li>
-                    <a href="../templates/Home Page.html">Home</a>
+                    <a href="{{ url_for('HomePage_func') }}">Home</a>
                 </li>
                 <li>
-                    <a href="../templates/Contact.html">Contact</a>
+                    <a href="{{ url_for('Contact_func') }}">Contact</a>
                 </li>
             
             </ul>
@@ -120,7 +120,7 @@
                     <br>איזה כלב מתאים לאורך חייך?
                 </h2> 
                 <h2>אם אתה רוצה לאמץ חבר צור איתנו קשר כאן:</h2>
-                <a href="../templates/Contact.html"> Contact </a> <br>
+                <a href="/Contact"> Contact </a> <br>
             </footer>
 
         </div>
