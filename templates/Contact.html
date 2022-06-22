@@ -1,39 +1,7 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
 <html dir="rtl">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact</title>
-    <link rel="stylesheet" href="../static/homework2.css">
-    <script src="../static/inin.js"></script>
-</head>
-
-
-<body>
-
-
-
-    <header>
-        <h1>DOG IS A FRIEND</h1>
-    </header>
-
-
-    <div class="nav">
-        <nav>
-            <ul>
-                <li>
-                    <a href="{{ url_for('HomePage_func') }}">Home</a>
-                </li>
-                <li>
-                    <a href="{{ url_for('Contact_func') }}">Contact</a>   #לבדוק אם חייב להנכיס את ה URL_FOR
-                </li>
-            
-            </ul>
-        </nav>
-    </div>
-
+{% block content %}
 
     <div class="con">
         <div class="labell">
@@ -56,10 +24,7 @@
         </div>
     </div>
 
-
+{% endblock %}
   
-</body>
+{{ super() }}
 
-</body>
-
-</html>

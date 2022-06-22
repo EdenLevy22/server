@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% include 'header.html' %}
+
+
+{% block header %}{% endblock %}
+
+{% block content %}
+<h2>Search User Form:</h2>
+<form action="/assignment3_2" >
+    <br>
+    <input type="text" name="user_name" placeholder="Insert Name">
+    <input type="submit" value = "Find">
+</form>
+
+    {% if user_name  %}
+        <h2>User Name: {{ user_name }} </h2>
+        <h2>Last Name: {{ user.last_name }}</h2>
+        <h2>User Email: {{ user.email }}</h2>
+    {% endif %}
+
+    {% if message %}
+        <h3 style="color: red">{{ message }}</h3>
+    {% endif %}
+
+    {% if users %}
+        <br>
+        {% for user in users %}
+            {% for key ,value in user.items() %}
+               <li> {{ key }} : {{value}} </li>
+               {% endfor %}
+                <br>
+           {% endfor %}
+    {% endif %}
+
+    {% if session['logedin'] %}
+        <h1>Welcome, {{ session['user_name'] | upper() }}</h1>
+        <h2>{{ message2 }}</h2>
+    {% else %}
+        <h1>Welcome to Log-In Page</h1>
+        {% if message2 %}
+            <h2> {{ message2 }}</h2>
+        {% endif %}
+
+
+<h2>Registration Form:</h2>
+<form action="/assignment3_2" , method="post">
+    <br>
+    <input type="text" name="user_name" placeholder="Insert Name">
+    <input type="password" name="password" placeholder="Insert password">
+    <input type="submit">
+</form>
+{% endif %}
+{% endblock %}
+{{ super() }}

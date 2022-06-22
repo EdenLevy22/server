@@ -1,10 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% include 'header.html' %}
 
-</body>
-</html>
+{% block header %} {% endblock %}
+{% block content %}
+
+<h1>Our dogs types</h1>
+    <ol >
+    <li >{{ 'labrador' | capitalize() }}</li>
+    <li >{{ 'bulldog' | capitalize() }}</li>
+    <li >{{ 'german shepherd' | title() }}</li>
+    <li >{{ 'golden retriever' | title() }}</li>
+    <li >{{ 'poodle' | capitalize() }}</li>
+    <li >{{ 'rottweiler' | capitalize() }}</li>
+    <li >{{ 'beagle' | capitalize() }}</li>
+    </ol>
+
+     <h1>do you want a dog?</h1>
+     {% if want_a_dog %}
+        <h2> Congratulation, {{ user_name | default('guest', true) | upper() }}!</h2>
+    {% else %}
+        <h1> Please think about it again </h1>
+    {% endif %}
+
+
+   <h1>dog details :</h1>
+     {% for title, value in dogs_names.items() %}
+                <h3>{{ title }}: {{ value }}</h3>
+            {% endfor %}
+
+   <h1> for of dogs_types:</h1>
+    {% for dog_type in dogs_types %}
+                {% if dog_type == 'Labrador' %}
+                    <h4>{{ dog_type | upper() }} </h4>
+                {% endif %}
+    {% endfor %}
+
+{% endblock %}
+{{ super() }}
+

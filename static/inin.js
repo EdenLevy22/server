@@ -19,3 +19,4 @@ window.onload = function(){
     function send() {
       document.getElementById("send").innerHTML = "תודה רבה! ניצור עמך קשר ברגע שנמצא לך חבר מתאים";
     }
+
