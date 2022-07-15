@@ -1,11 +1,8 @@
 from flask import Blueprint, render_template,redirect
 import mysql.connector
 from flask import request,session, jsonify
-import time
 import requests
-import random
-
-
+from flask import url_for
 
 assignment_4 = Blueprint('assignment_4', __name__,
                          static_folder='JS',
@@ -13,7 +10,10 @@ assignment_4 = Blueprint('assignment_4', __name__,
 
 @assignment_4.route('/assignment_4')
 def assignment_4_func():
-    return render_template('assignment_4.html')
+        query = 'select * from users'
+        users_list = interact_db(query, query_type='fetch')
+        return render_template('assignment_4.html', users=users_list)
+    # return render_template('assignment_4.html')
 
 
 
@@ -59,6 +59,7 @@ def update_user_func():
         interact_db(query, query_type='commit')
         query = "UPDATE users SET password ='%s' WHERE name='%s';" % (password, name)
         interact_db(query, query_type='commit')
+
         return redirect('/assignment_4')
 
 
@@ -71,13 +72,14 @@ def delete_user_func():
     query = "DELETE FROM users WHERE last_name='%s';" % last_name
     #print(query)
     interact_db(query, query_type='commit')
+
     return redirect('/assignment_4')
 
-@assignment_4.route('/Select_user')
-def users():
-    query = 'select * from users'
-    users_list = interact_db(query, query_type='fetch')
-    return render_template('assignment_4.html', users=users_list)
+# @assignment_4.route('/Select_user')
+# def users():
+#     query = 'select * from users'
+#     users_list = interact_db(query, query_type='fetch')
+#     return render_template('assignment_4.html', users=users_list)
 
 
 
