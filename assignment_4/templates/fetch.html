@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Fetch - FrontEnd{% endblock %}
+
+{% block content %}
+    <h1>Fetch - FrontEnd</h1>
+    <form action="/assignment4/backend" method="get">
+     <h3>User List:</h3>
+        <input id="user_id" type="text" name="name" placeholder="Insert id" value= {{ input | default (3,true)}} >
+    <script src="../JS/fetch.js"></script>
+    </form>
+    <button onclick="myFunction()">Get User</button>
+    <main>
+    </main>
+
+    <h1>Fetch - BackEnd</h1>
+        <form action="/assignment4/backend" method="get">
+        Num: <input type="text" name="num"  value={{ session.num | default(3, true) }}  >
+        <input type="hidden" name="type" value="sync">
+        <input type="submit" value="Get User">
+        </form>
+
+    {% if session.pockemons %}
+        {% for user in session.pockemons %}
+            <br>
+            <img src="{{ user.sprites}}" alt="pic">
+            <h4>Name: {{ user.first_name }}</h4>
+            <h4>Last Name: {{ user.last_name }}</h4>
+            <h4>mailto: {{ user.email }}</h4>
+            <hr>
+        {% endfor %}
+    {% endif %}
+
+{% endblock %}
+{% block footer %}
+{% endblock %}

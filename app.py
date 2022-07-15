@@ -1,9 +1,10 @@
-from flask import Flask, redirect
+from flask import Flask, redirect,jsonify
 from flask import url_for
 from flask import render_template
 from flask import request
 from flask import session
 from datetime import timedelta
+
 
 app = Flask(__name__)
 
@@ -21,7 +22,6 @@ def HomePage_func():
 
 @app.route('/assignment3_1')
 def assignment3_1_func():
-
     want_a_dog = True
     user_name = 'eden'
     dogs_names = {'name': 'Lieo',  'nickname': 'Lilo', 'age': '2 years '}
@@ -88,3 +88,9 @@ def logout_func():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+
+from assignment_4.assignment_4 import assignment_4
+app.register_blueprint(assignment_4)
+
+
