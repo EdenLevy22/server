@@ -81,80 +81,20 @@ def delete_user_func():
 #     users_list = interact_db(query, query_type='fetch')
 #     return render_template('assignment_4.html', users=users_list)
 
-
-
-
-# @assignment_4.route('/assignment4/outer_source')
-# def outer_source():
-#     return render_template('fetch.html')
-
-
-
-# @assignment_4.route('/assignment4/backend')
-# def outer_backend():
-#     return render_template('fetch.html')
-
-
-# @assignment_4.route('/assignment4/backend')
-# def fetch_be_func():
-#     if 'type' in request.args:
-#         print(" form")
-#         start_time = time.time()
-#         num = int(request.args['num'])
-#         print(num)
-#         rand_start = random.randint(1, 30)
-#         rand_end = rand_start + num
-#         session['num'] = num
-#         pockemons = []
-#
-#         # # SYNC
-#         if request.args['type'] == 'sync':
-#             pockemons = get_pockemons_sync(rand_start, rand_end)
-#
-#
-#         end_time = time.time()
-#         time_to_finish = f'{end_time - start_time: .2f} seconds'
-#         session[f'{request.args["type"]}_time'] = time_to_finish
-#         session[f'{request.args["type"]}_num'] = session['num']
-#         save_users_to_session(pockemons)
-#     else:
-#         session.clear()
-#
-#
-#     return render_template('fetch.html')
-#
-#
-# def get_pockemons_sync(from_val, until_val):
-#     pockemons = []
-#     num = request.args['num']
-#     res = requests.get(f': https://reqres.in/api/users/{num}')
-#     print(res)
-#     pockemons.append(res.json())
-#
-#     return pockemons
-#
-# def save_users_to_session(pockemons):
-#     users_list_to_save = []
-#     for pockemon in pockemons:
-#         pockemons_dict = {
-#             'sprites': {
-#                 'front_default': pockemon['sprites']['front_default']
-#             },
-#             'first_name': pockemon['name'],
-#             # 'height': pockemon['height'],
-#             # 'weight': pockemon['weight'],
-#         }
-#         users_list_to_save.append(pockemons_dict)
-#     session['pockemons'] = users_list_to_save
-#     print(users_list_to_save)
-
-# def get_user(from_val, until_val):
-#     users = []
-#     for id in range(from_val, until_val):
-#         res = requests.get(f'https://reqres.in/api/users/{id}')
-#         print(res)
-#         users.append(res.json())
-#     return users
+@assignment_4.route('/assignment4/users')
+def get_users():
+        query = f'select * from users'
+        users_list = interact_db(query, query_type='fetch')
+        return_list = []
+        for user in users_list:
+            user_dict = {
+                'name': user.name,
+                'last_name': user.last_name,
+                'email': user.email,
+                'password': user.password
+            }
+            return_list.append(user_dict)
+        return jsonify(return_list)
 
 def get_users_sync(from_val):
     pockemons = []
