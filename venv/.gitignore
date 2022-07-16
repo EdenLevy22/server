@@ -1,3 +1,6 @@
-password.txt
-.env
 
+logs
+passwords.txt
+venv
+.idea
+.env

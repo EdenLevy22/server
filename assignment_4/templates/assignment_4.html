@@ -1,7 +1,12 @@
 {% extends 'base.html' %}
 
 
+
 {% block content %}
+    {% if message %}
+        <h3 style="color: red">{{ message }}</h3>
+    {% endif %}
+
     <h1>Insertion form: creat a new user</h1>
     <form action="/insert_user" , method="post" >
     <br>
@@ -31,9 +36,10 @@
         <input type="submit" value="Delete">
 
     </form>
-    {% if message %}
-            <h3 style="color: red">{{ message }}</h3>
-    {% endif %}
+
+
+
+
     <h1>List of all the users : </h1>
     {% if users %}
     <br>
