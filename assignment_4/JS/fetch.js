@@ -10,9 +10,6 @@ function myFunction() {
     );
 }
 
-
-
-
 function createUsersList(users){
        console.log(users)
        const user =users

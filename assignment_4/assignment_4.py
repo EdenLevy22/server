@@ -3,7 +3,6 @@ import mysql.connector
 from flask import request,session, jsonify
 import requests
 
-
 assignment_4 = Blueprint('assignment_4', __name__,
                          static_folder='JS',
                          template_folder='templates')

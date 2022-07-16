@@ -1,7 +1,5 @@
 {% extends 'base.html' %}
 
-
-
 {% block content %}
     {% if message %}
         <h3 style="color: red">{{ message }}</h3>
@@ -34,11 +32,7 @@
         <input type="text" name="user_name" placeholder="Insert Name">
         <input type="text" name="last_name" placeholder="Insert Last Name">
         <input type="submit" value="Delete">
-
     </form>
-
-
-
 
     <h1>List of all the users : </h1>
     {% if users %}
